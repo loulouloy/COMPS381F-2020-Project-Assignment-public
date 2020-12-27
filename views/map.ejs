@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title><%= title %> location</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+</head>
+<body>
+<div class="jumbotron bg-primary">
+    <H1 class="display-4 text-light"><%= title %> location</H1>
+</div>
+<div class="container">
+    <div id="mapid" style="height: 67%;"></div>
+    <script>
+        var mymap = L.map('mapid').setView([ <%= lat %>, <%= lon %>], 16);
+        var marker = L.marker([<%= lat %>, <%= lon %>]).addTo(mymap);
+        var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 16});
+        mymap.addLayer(osm);
+    </script>
+    </br>
+</div>
+</body>
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3 bg-primary">
+        <p class="text-light">
+            <a class="text-light" href='/display?_id=<%= id %>'>Go Back</a>
+            &nbsp|&nbsp
+            <a class="text-light" href='/read'>Home</a>
+        </p>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,68 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Create restaurant</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+    <H1 class="display-4">Create restaurant</H1>
+</div>
+<div class="container">
+    <form action="/Create" method="post" enctype="multipart/form-data">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name:</label>
+            <input class="form-control" type="text" name="name">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Borough:</label>
+            <input class="form-control" type="text" name="borough">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Cuisine:</label>
+            <input class="form-control" type="text" name="cuisine">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Street: </label>
+            <input class="form-control" type="text" name="street">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Building:</label>
+            <input class="form-control" type="text" name="building">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Zipcode:</label>
+            <input class="form-control" type="text" name="zipcode">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">GPS Coordinates (lat.) </label>
+            <div class="col-xs-3">
+                <input class="form-control" type="text" name="gps_lat">
+            </div>
+            <label class="col-sm-2 col-form-label">GPS Coordinates (lon.) </label>
+            <div class="col-xs-3">
+                <input class="form-control" type="text" name="gps_lon">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Photo :</label>
+            <div class="col-xs-3">
+                <input class="form-control-file" type="file" id="image" name="image"
+                       accept="image/x-png,image/gif,image/jpeg">
+            </div>
+        </div>
+        <div class="form-group row">
+            <input class="btn btn-primary" type="submit" value="Create">
+        </div>
+    </form>
+
+</div>
+</body>
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: #e9ecef">
+        <p><a href='/read'>Home</a></p>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Restaurants</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center container=fluid">
+    <H1 class="display-4">Restaurants</H1>
+    <p>Hello, <%= name %></p>
+    <p>Showing <%= docs.length %> document(s)</p>
+</div>
+<div class="container">
+    <button type="button" onclick="location.href = '/create';" class="btn btn-primary">Create new restaurant</button>
+    <button type="button" onclick="location.href = '/logout';" style="float: right;" class="btn btn-secondary">Logout
+    </button>
+    <br>
+    <br>
+    <div class="form-group">
+        <form action="/search" method="post">
+            Search:
+            <input type="text" name="key" required/>
+            <select id="search" name="search">
+                <option value="name">name</option>
+                <option value="borough">borough</option>
+                <option value="cuisine">cuisine</option>
+            </select>
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    <div class="list-group">
+        <% docs.forEach(function(doc){ %>
+            <a class="list-group-item list-group-item-action" href="/display?_id=<%= doc._id %>"><%= doc.name %></a>
+        <% }); %>
+    </div>
+    <br>
+</div>
+</body>
+</html>

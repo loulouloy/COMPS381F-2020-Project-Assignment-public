@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Rate</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+</head>
+<body>
+<div class="jumbotron">
+    <H1 class="display-4">Rate</H1>
+</div>
+<div class="container">
+    <form action="/rate" method="post">
+        <h3>Please rate (From 1- 10):</h3> <input type="number" name="score" min="1" max="10" required><br>
+        <p><input type="hidden" name="_id" value="<%= query %>"/></p>
+        <p><input class="btn btn-primary" type="submit" value="Rate"></p>
+    </form>
+</div>
+</body>
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: #e9ecef">
+        <p><a href='/read'>Home</a></p>
+    </div>
+</footer>
+</html>

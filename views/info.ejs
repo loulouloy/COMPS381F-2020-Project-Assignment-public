@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title><%= docs.name %></title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+    <H1 class="display-4"><%= docs.name %></H1>
+</div>
+<div class="container">
+    <% if ((docs.photo !== "") && (docs.photo != null)) { %>
+        <p>Photo:</p>
+        <p><img src="data:<%= docs.photo_minetype %>;base64,<%= docs.photo %>"></p>
+    <% } %>
+    <p>Borough: <%= docs.borough %></p>
+    <p>Cuisine: <%= docs.cuisine %></p>
+    <p>Street: <%= docs.address.street %></p>
+    <p>Building: <%= docs.address.building %></p>
+    <p>Zipcode: <%= docs.address.zipcode %></p>
+    <p>GPS: <%= docs.address.coord[0] %>,<%= docs.address.coord[1] %></p>
+    <% if (docs.address.coord[0] && docs.address.coord[1] && !isNaN(docs.address.coord[0]) && !isNaN(docs.address.coord[1]) && docs.address.coord[0] != null && docs.address.coord[1] != null) { %>
+        <p>
+            <a href="/map?lat=<%= docs.address.coord[0] %>&lon=<%= docs.address.coord[1] %>&title=<%= docs.name %>&id=<%= docs._id %>">map</a>
+        </p>
+    <% } %>
+    <p>Grades:
+    <ol>
+        <% if (docs.grades.length === 0){ %>
+            No rating yet
+        <% }else{ %>
+            <% docs.grades.forEach(function(doc){ %>
+                <% if (doc.user !== "" && doc.score !== ""){ %>
+                    <li><%= doc.user %>, <%= doc.score %></li>
+            <% }}); %>
+        <% } %>
+    </ol>
+    </p>
+    <p>Owner: <%= docs.owner %></p>
+    <p>
+        <button onclick="location.href = '/rate?_id=<%= docs._id %>';" class="btn btn-warning">Rate</button>
+        <button onclick="location.href = '/edit?_id=<%= docs._id %>';" class="btn btn-info">Edit</button>
+        <button onclick="location.href = '/delete?_id=<%= docs._id %>';" class="btn btn-danger">Delete</button>
+    </p>
+</div>
+</body>
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: #e9ecef">
+        <p><a href='/read'>Home</a></p>
+    </div>
+</footer>
+</html>

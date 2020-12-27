@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Edit <%= docs.name %></title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+    <H1 class="display-4">Edit <%= docs.name %></H1>
+</div>
+<div class="container">
+    <form action="edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_id" value="<%= docs._id %>">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name:</label>
+            <input class="form-control" type="text" name="name" value="<%= docs.name %>">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Borough:</label>
+            <input class="form-control" type="text" name="borough" value="<%= docs.borough %>">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Cuisine:</label>
+            <input class="form-control" type="text" name="cuisine" value="<%= docs.cuisine %>">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Street: </label>
+            <input class="form-control" type="text" name="street" value="<%= docs.address.street %>">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Building:</label>
+            <input class="form-control" type="text" name="building" value="<%= docs.address.building %>">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Zipcode:</label>
+            <input class="form-control" type="text" name="zipcode" value="<%= docs.address.zipcode %>">
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">GPS Coordinates (lat.) </label>
+            <div class="col-xs-3">
+                <input class="form-control" type="text" name="gps_lat" value="<%= docs.address.coord[0] %>">
+            </div>
+            <label class="col-sm-2 col-form-label">GPS Coordinates (lon.) </label>
+            <div class="col-xs-3">
+                <input class="form-control" type="text" name="gps_lon" value="<%= docs.address.coord[1] %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Photo :</label>
+            <% if ((docs.photo !== "") && (docs.photo != null)) { %>
+                <img src="data:<%= docs.photo_minetype %>;base64,<%= docs.photo %>">
+                <input type="hidden" value="<%= docs.photo %>" name="photo">
+                <input type="hidden" value="<%= docs.photo_minetype %>" name="photo_minetype">
+            <% } %>
+            <div class="col-xs-3">
+                <input class="form-control-file" type="file" id="image" name="image"
+                       accept="image/x-png,image/gif,image/jpeg">
+            </div>
+        </div>
+        <div class="form-group row">
+            <input class="btn btn-primary" type="submit" value="Update">
+        </div>
+    </form>
+</div>
+</body>
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: #e9ecef">
+        <p><a href='/read'>Home</a></p>
+    </div>
+</footer>
+</html>
